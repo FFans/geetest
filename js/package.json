@@ -5,6 +5,7 @@
     "devDependencies": {
         "@flarum/prettier-config": "^1.0.0",
         "@types/lodash-es": "^4.17.12",
+        "@types/mithril": "^2.2.7",
         "file-loader": "^6.2.0",
         "flarum-tsconfig": "^1.0.2",
         "flarum-webpack-config": "^2.0.0",

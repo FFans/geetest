@@ -1526,6 +1526,7 @@ __metadata:
   dependencies:
     "@flarum/prettier-config": "npm:^1.0.0"
     "@types/lodash-es": "npm:^4.17.12"
+    "@types/mithril": "npm:^2.2.7"
     external-load: "npm:^1.0.0"
     file-loader: "npm:^6.2.0"
     flarum-tsconfig: "npm:^1.0.2"
@@ -1746,7 +1747,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mithril@npm:^2.0.7":
+"@types/mithril@npm:^2.0.7, @types/mithril@npm:^2.2.7":
   version: 2.2.7
   resolution: "@types/mithril@npm:2.2.7"
   checksum: 10c0/65533d9586fe75e3d8e2358dad6b4c72b605e2fca7774f32abf0417c5750b7e2aeba1748ec80218f0fb037032a72bc908a50b4e8e1fa4ff9b2adb6a934af44e2
