@@ -8,7 +8,7 @@ import { omit } from 'lodash-es';
 import CommonSettings from '@/common/utils/Settings';
 
 async function addResources(productService: EnumProductService) {
-  console.log('[productService]', productService);
+  // console.log('[productService]', productService);
   if (app.geetestLoaded) return;
 
   await load.js(`${CommonSettings.getAssetsPath()}/${productServiceJs[productService]}.js`);

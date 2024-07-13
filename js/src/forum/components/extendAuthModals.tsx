@@ -23,7 +23,7 @@ export const addCaptchaToAuthModal = <T extends typeof LogInModal | typeof SignU
   extend(modal.prototype, 'oninit', function () {
     const config = ForumSettings.getConfig(contextEvent);
 
-    console.log('[config]', contextEvent, config);
+    // console.log('[config]', contextEvent, config);
 
     if (!config) return;
 
@@ -51,7 +51,7 @@ export const addCaptchaToAuthModal = <T extends typeof LogInModal | typeof SignU
       }
     );
 
-    console.log('[state.geetestCaptcha]', this.state.geetestCaptcha);
+    // console.log('[state.geetestCaptcha]', this.state.geetestCaptcha);
   });
 
   extend(modal.prototype, dataMethod, function (data) {
@@ -90,7 +90,7 @@ export const addCaptchaToAuthModal = <T extends typeof LogInModal | typeof SignU
       } finally {
         e.stopPropagation();
         e.preventDefault();
-        console.log('isBind');
+        // console.log('isBind');
       }
       return;
     }

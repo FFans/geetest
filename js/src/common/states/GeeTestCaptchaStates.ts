@@ -35,7 +35,7 @@ export default class GeeTestCaptchaStates {
   }
 
   render(element: Element) {
-    console.log('render', this.config.productService);
+    // console.log('render', this.config.productService);
 
     switch (this.config.productService) {
       case EnumProductService.V4:
@@ -65,7 +65,7 @@ export default class GeeTestCaptchaStates {
         onError: this.handleInitError.bind(this),
       },
       (captcha) => {
-        console.log('[captcha]', captcha);
+        // console.log('[captcha]', captcha);
         this.captchaInstance = captcha;
 
         captcha.appendTo(element);
@@ -101,7 +101,7 @@ export default class GeeTestCaptchaStates {
   ) {
     // {code: '60000',msg:"用户配置错误"，desc:{ detail: "用户id缺少"} }
     // Similarly to error.alert, we create an alert payload that can then be shown in-context depending where the code is called from
-    console.log('[error]', error);
+    // console.log('[error]', error);
     const content = `${subject}：${error.code} ${error.msg} ${error.desc.detail ? `（${error.desc.detail}）` : ''}`;
     const alertAttrs = {
       type: 'error',

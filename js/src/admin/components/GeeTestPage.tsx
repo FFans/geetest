@@ -36,7 +36,7 @@ export default class GeeTestPage extends ExtensionPage {
       this.settings[path](value === '1');
     });
 
-    console.log('[this.settings]', this.settings);
+    // console.log('[this.settings]', this.settings);
   }
 
   content() {
@@ -101,7 +101,7 @@ export default class GeeTestPage extends ExtensionPage {
 
     const settings = { ...this.settings };
 
-    console.log('[page settings]', settings);
+    // console.log('[page settings]', settings);
 
     // format current normal config
     for (const key in settings) {
@@ -113,7 +113,7 @@ export default class GeeTestPage extends ExtensionPage {
       }
     }
 
-    console.log('[test settings]', settings);
+    // console.log('[test settings]', settings);
 
     items.add('geetest', <GeeTestCaptchaTest settings={settings} />);
 
