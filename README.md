@@ -2,7 +2,9 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/ffans/geetest.svg)](https://packagist.org/packages/ffans/geetest) [![Total Downloads](https://img.shields.io/packagist/dt/ffans/geetest.svg)](https://packagist.org/packages/ffans/geetest)
 
-A [Flarum](http://flarum.org) extension. Bring GeeTest CAPTCHA to your forum.
+A [Flarum](http://flarum.org) extension. Bring [GeeTest CAPTCHA](https://www.geetest.com/en/) to your forum.
+
+> Apply your [GeeTest account](https://www.geetest.com/en/Register_en) first, then go to the [Dashboard](https://auth.geetest.com/product) and create your application, and now you get the id and the key.
 
 Special thanks to `fof/recaptcha` for the code reference during development.
 
