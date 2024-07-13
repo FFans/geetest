@@ -1,0 +1,48 @@
+ffans-geetest:
+  # For more details on the format
+  # Checkout https://docs.flarum.org/extend/i18n/#appendix-a-standard-key-format
+  admin:
+    settings:
+      product_service_label: 产品与服务
+      product_service_help_text: 选择要使用的极验产品与服务
+      product_service_v4_text: 行为验 4.0
+      product_service_v3_text: 行为验证 3.0
+      context_event_label: 应用场景
+      context_event_help_text: 将验证服务应用到不同的场景，并设置单独的验证配置
+      context_event_login_text: => core.ref.log_in
+      context_event_signup_text: => core.ref.sign_up
+      context_event_forgot_text: => core.forum.forgot_password.title
+      config:
+        title: "{context}验证配置"
+        standalone_label: 单独配置
+        standalone_help_text: 启用此项，为当前场景填写单独的验证配置，否则使用通用配置
+        product_label: 验证弹出形式
+        product_help_text: 请选择验证界面弹出形式
+        product_float_label: 浮动式
+        product_float_help_text: 由验证按钮变换成验证面板
+        product_popup_label: 弹出式
+        product_popup_help_text: 居中弹出验证面板
+        product_bind_label: 按钮绑定
+        product_bind_help_text: 由指定的按钮来触发验证面板
+        product_learn_more_link: 了解验证界面配置
+        id_label: 验证 ID
+        id_help_text: "请输入对应<a>产品与服务</a>的验证 ID"
+        key_label: 验证 Key
+        key_help_text: "请输入对应<a>产品与服务</a>的验证 Key"
+    test:
+      title: 测试验证码
+      help_text: 使用上述通用配置测试极验验证码
+      submit_button: 提交
+      load_button: 加载
+      reload_button: 重新加载
+
+  forum:
+
+  libs:
+    verify:
+      success_message: 验证成功
+      error_message: 验证失败
+      error_retry_message: 验证失败，请重试
+      init_error_message: 初始化验证失败
+      required_message: 请点击验证
+      not_pass_message: 验证未通过

@@ -1,0 +1,126 @@
+@import "utils";
+
+.ffans-geetest-Page {
+  .Form-group {
+    .inline {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      gap: 4px;
+      width: 100%;
+
+      &:not(:last-of-type) {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+.ffans-geetest--product-help {
+  position: relative;
+
+  i {
+    cursor: pointer;
+  }
+
+  &.is-hover {
+    .dl-tooltip {
+      visibility: visible;
+      opacity: 1;
+      height: fit-content;
+      padding: 7px 12px;
+    }
+  }
+
+  .dl-tooltip {
+    position: absolute;
+    top: 0;
+    left: 16px;
+
+    z-index: 1;
+
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+
+    width: 400px;
+    color: var(--control-color);
+    font-weight: normal;
+    text-decoration: none;
+    background-color: #e8ecf3;
+    border-radius: var(--border-radius);
+
+    box-shadow: 0px 0px 2.2px rgba(0, 32, 94, 0.09),
+    0px 0px 5.3px rgba(0, 32, 94, 0.065),
+    0px 0px 10px rgba(0, 32, 94, 0.054),
+    0px 0px 17.9px rgba(0, 32, 94, 0.045),
+    0px 0px 33.4px rgba(0, 32, 94, 0.036),
+    0px 0px 80px rgba(0, 32, 94, 0.025);
+
+    dl {
+      line-height: 1.5;
+    }
+
+    dt {
+      list-style: circle;
+      display: list-item;
+      margin-left: 2em;
+      font-weight: bold;
+    }
+
+    dd {
+      position: relative;
+      //font-size: 0;
+    }
+
+    img {
+      width: 100%;
+      user-select: none;
+    }
+
+    > span {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+
+      font-size: 11px;
+      height: 11px;
+      line-height: 11px;
+      text-shadow: 0px 0px 5px #fff;
+    }
+
+    a {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      text-decoration: none;
+
+      &:hover span {
+        text-decoration: underline;
+      }
+
+      i {
+        text-decoration: none !important;
+      }
+    }
+  }
+}
+
+@keyframes form-shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
