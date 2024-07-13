@@ -6,8 +6,6 @@
 
 > 请先申请 [极验账号](https://www.geetest.com/Register)，然后前往 [后台](https://auth.geetest.com/product) 创建应用，获取验证码标识和密钥。
 
-开发时有参考 `fof/recaptcha`，特此感谢。
-
 ![img.png](img.png)
 
 ## 功能
@@ -35,7 +33,12 @@ php flarum migrate
 php flarum cache:clear
 ```
 
-### 链接
+## 致谢
+
+- 特别感谢极验官方和[右可哥](https://yorkun.com/)提供测试账号，感谢支持。
+- 开发时有参考 `fof/recaptcha`，特此感谢。
+
+## 链接
 
 - [国际社区](https://discuss.flarum.org/d/34860)
 - [中文社区](https://discuss.flarum.org.cn/d/15787)

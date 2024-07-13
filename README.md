@@ -6,8 +6,6 @@ A [Flarum](http://flarum.org) extension. Bring [GeeTest CAPTCHA](https://www.gee
 
 > Apply your [GeeTest account](https://www.geetest.com/en/Register_en) first, then go to the [Dashboard](https://auth.geetest.com/product) and create your application, and now you get the id and the key.
 
-Special thanks to `fof/recaptcha` for the code reference during development.
-
 ![img.png](img.png)
 
 ## Features
@@ -33,6 +31,12 @@ composer update ffans/geetest:"*"
 php flarum migrate
 php flarum cache:clear
 ```
+
+## Credits
+
+- Special thanks to GeeTest and [YorKun](https://yorkun.com/) for providing test accounts, thanks for your support.
+
+- Special thanks to `fof/recaptcha` for the code reference during development.
 
 ## Links
 
