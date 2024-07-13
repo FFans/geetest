@@ -30,9 +30,12 @@ class Utils
 
     private static function isNil(SettingsRepositoryInterface $settings, array $keys)
     {
-        return array_reduce($keys, function ($carry, $key) use ($settings) {
-            return $carry === false && trim($settings->get(self::getSettingPath($key), '')) === '';
-        }, false);
+        $flag = false;
+        foreach ($keys as $key) {
+            $flag = trim($settings->get(self::getSettingPath($key), '')) === '';
+            if($flag) break;
+        }
+        return $flag;
     }
 
     public static function getSettingPath(string $key): string

@@ -62,7 +62,7 @@ class ForumAttributes
         ];
 
         foreach ($boolSettings as $name) {
-            $attributes[Utils::getSettingPath(Str::camel($name))] = (bool) $this->settings->get(Utils::getSettingPath($name));
+            $attributes[Utils::getSettingPath(Str::camel($name))] = $this->settings->get(Utils::getSettingPath($name)) === '1';
         }
 
         $attributes[Utils::getSettingPath(self::Configured)] = Utils::isExtensionSetup($this->settings);
