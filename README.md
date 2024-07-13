@@ -4,12 +4,15 @@
 
 A [Flarum](http://flarum.org) extension. Bring GeeTest CAPTCHA to your forum.
 
+Special thanks to `fof/recaptcha` for the code reference during development.
+
 ![img.png](img.png)
 
 ## Features
 - [x] Sign Up
 - [x] Log In
 - [x] Forgot Password
+- [x] Support Adaptive CAPTCHA 4.0
 - [ ] Support CAPTCHA 3.0
 - [ ] Support replay verification
 
