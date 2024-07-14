@@ -37,6 +37,7 @@ php flarum cache:clear
 
 - 特别感谢极验官方和[右可哥](https://yorkun.com/)提供测试账号，感谢支持。
 - 开发时有参考 `fof/recaptcha`，特此感谢。
+- 扩展程序图标取自 [GeeTest](https://www.figma.com/community/file/1044470021229645118)，共享协议 CC BY 4.0。
 
 ## 链接
 

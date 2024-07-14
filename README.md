@@ -35,8 +35,8 @@ php flarum cache:clear
 ## Credits
 
 - Special thanks to GeeTest and [YorKun](https://yorkun.com/) for providing test accounts, thanks for your support.
-
 - Special thanks to `fof/recaptcha` for the code reference during development.
+- Extension Icon source from [GeeTest Figma](https://www.figma.com/community/file/1044470021229645118), licensed under CC BY 4.0.
 
 ## Links
 
