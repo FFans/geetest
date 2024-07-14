@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/ffans/geetest.svg)](https://packagist.org/packages/ffans/geetest) [![Downloads](https://img.shields.io/packagist/dt/ffans/geetest.svg)](https://packagist.org/packages/ffans/geetest)
 
-[Flarum](http://flarum.org) 扩展程序，使用[极验服务](https://www.geetest.com/)保护社区安全。
+[Flarum](http://flarum.org) 扩展程序，使用[极验服务](https://www.geetest.com/adaptive-captcha-demo)保护社区安全。
 
 > 请先申请 [极验账号](https://www.geetest.com/Register)，然后前往 [后台](https://auth.geetest.com/product) 创建应用，获取验证码标识和密钥。
 
