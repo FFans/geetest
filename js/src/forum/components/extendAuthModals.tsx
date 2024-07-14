@@ -6,12 +6,13 @@ import GeeTest from '@/common/components/GeeTest';
 import GeeTestCaptchaStates from '@/common/states/GeeTestCaptchaStates';
 import SignUpModal from 'flarum/forum/components/SignUpModal';
 import ForgotPasswordModal from 'flarum/forum/components/ForgotPasswordModal';
+import ChangePasswordModal from 'flarum/forum/components/ChangePasswordModal';
 import { EnumContextEvent } from '@/common/enums/EnumContextEvent';
 import translate from '@/common/utils/translate';
 
 type BindSuccessEvent = SubmitEvent & { __isBindSuccess: boolean };
 
-export const addCaptchaToAuthModal = <T extends typeof LogInModal | typeof SignUpModal | typeof ForgotPasswordModal>({
+export const addCaptchaToAuthModal = <T extends typeof LogInModal | typeof SignUpModal | typeof ForgotPasswordModal | typeof ChangePasswordModal>({
   modal,
   contextEvent,
   dataMethod,
@@ -102,4 +103,5 @@ export default () => {
   addCaptchaToAuthModal({ modal: LogInModal, contextEvent: EnumContextEvent.LOGIN, dataMethod: 'loginParams' });
   addCaptchaToAuthModal({ modal: SignUpModal, contextEvent: EnumContextEvent.SIGNUP, dataMethod: 'submitData' });
   addCaptchaToAuthModal({ modal: ForgotPasswordModal, contextEvent: EnumContextEvent.FORGOT, dataMethod: 'requestParams' });
+  addCaptchaToAuthModal({ modal: ChangePasswordModal, contextEvent: EnumContextEvent.FORGOT, dataMethod: 'requestBody' });
 };

@@ -126,8 +126,8 @@ class GeeTestRequestMethod
         curl_setopt($ch, CURLOPT_HTTPHEADER, array_merge(['Content-type' => 'application/x-www-form-urlencoded'], $headers));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $res = curl_exec($ch);
-        curl_close($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
         if (strcmp($httpCode, '200') != 0) {
             $res = false;

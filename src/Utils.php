@@ -55,13 +55,21 @@ class Utils
         return $settings->get(self::getSettingPath($contextEvent), '') === '1';
     }
 
-    public static function logError(string $message, mixed $details = null)
+    /**
+     * @param string $message
+     * @param mixed $details
+     */
+    public static function logError(string $message, $details = null)
     {
         resolve('log')->error('[FFans\GeeTest] ' . $message);
         $details && resolve('log')->error(var_export($details, true));
     }
 
-    public static function logInfo(string $message, mixed $details = null)
+    /**
+     * @param string $message
+     * @param mixed $details
+     */
+    public static function logInfo(string $message, $details = null)
     {
         resolve('log')->info('[FFans\GeeTest] ' . $message);
         $details && resolve('log')->info(var_export($details, true));
