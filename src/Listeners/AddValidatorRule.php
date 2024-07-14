@@ -44,7 +44,7 @@ class AddValidatorRule
         $validator->addExtension(
             'double_check',
             function ($attribute, $value) use ($flarumValidator, $validator) {
-                Utils::logInfo('AddValidatorRule:', $value);
+                // Utils::logInfo('AddValidatorRule:', $value);
 
                 $validator->setCustomMessages(
                     [

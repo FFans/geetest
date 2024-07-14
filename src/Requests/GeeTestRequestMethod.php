@@ -154,7 +154,7 @@ class GeeTestRequestMethod
             }
 
             $this->result = json_decode($resBody, true);
-            Utils::logInfo('doubleCheck: typeof=' . gettype($this->result) . ' key=' . $this->captchaKey . ' body=' . json_encode($this->result, JSON_FORCE_OBJECT));
+            // Utils::logInfo('doubleCheck: typeof=' . gettype($this->result) . ' key=' . $this->captchaKey . ' body=' . json_encode($this->result, JSON_FORCE_OBJECT));
 
         } catch (Throwable $e) {
             $this->result = [
