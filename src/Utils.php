@@ -18,14 +18,16 @@ class Utils
 {
     const PREFIX = 'ffans-geetest';
 
-    public static function isExtensionSetup(SettingsRepositoryInterface $settings, string $type = null): bool
+    private static $configKeys = [
+        ContextEvent::Signup => [ContextEvent::Signup . '.product', ContextEvent::Signup . '.id', ContextEvent::Signup . '.key'],
+        ContextEvent::Login => [ContextEvent::Login . '.product', ContextEvent::Login . '.id', ContextEvent::Login . '.key'],
+        ContextEvent::Forgot => [ContextEvent::Forgot . '.product', ContextEvent::Forgot . '.id', ContextEvent::Forgot . '.key'],
+        'default' => ['product_service', 'product', 'id', 'key'],
+    ];
+
+    public static function isExtensionSetup(SettingsRepositoryInterface $settings, string $type = 'default'): bool
     {
-        return match ($type) {
-            ContextEvent::Signup => !self::isNil($settings, [ContextEvent::Signup . '.product', ContextEvent::Signup . '.id', ContextEvent::Signup . '.key']),
-            ContextEvent::Login => !self::isNil($settings, [ContextEvent::Login . '.product', ContextEvent::Login . '.id', ContextEvent::Login . '.key']),
-            ContextEvent::Forgot => !self::isNil($settings, [ContextEvent::Forgot . '.product', ContextEvent::Forgot . '.id', ContextEvent::Forgot . '.key']),
-            default => !self::isNil($settings, ['product_service', 'product', 'id', 'key']),
-        };
+        return !self::isNil($settings, self::$configKeys[$type]);
     }
 
     private static function isNil(SettingsRepositoryInterface $settings, array $keys)
@@ -33,7 +35,7 @@ class Utils
         $flag = false;
         foreach ($keys as $key) {
             $flag = trim($settings->get(self::getSettingPath($key), '')) === '';
-            if($flag) break;
+            if ($flag) break;
         }
         return $flag;
     }
@@ -64,8 +66,9 @@ class Utils
         resolve('log')->info('[FFans\GeeTest] ' . $message);
         $details && resolve('log')->info(var_export($details, true));
     }
+
     public static function translate(string $key)
     {
-        return resolve('translator')->trans(self::PREFIX.'.'.$key);
+        return resolve('translator')->trans(self::PREFIX . '.' . $key);
     }
 }
