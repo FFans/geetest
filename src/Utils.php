@@ -13,21 +13,37 @@ namespace FFans\GeeTest;
 
 use FFans\GeeTest\Enums\ContextEvent;
 use Flarum\Settings\SettingsRepositoryInterface;
+use ReflectionClass;
 
 class Utils
 {
     const PREFIX = 'ffans-geetest';
 
-    private static $configKeys = [
-        ContextEvent::Signup => [ContextEvent::Signup . '.product', ContextEvent::Signup . '.id', ContextEvent::Signup . '.key'],
-        ContextEvent::Login => [ContextEvent::Login . '.product', ContextEvent::Login . '.id', ContextEvent::Login . '.key'],
-        ContextEvent::Forgot => [ContextEvent::Forgot . '.product', ContextEvent::Forgot . '.id', ContextEvent::Forgot . '.key'],
-        'default' => ['product_service', 'product', 'id', 'key'],
-    ];
+    private static function generateConfigKeys(): array
+    {
+        $reflectionClass = new ReflectionClass(ContextEvent::class);
+        $contextEvents = array_values($reflectionClass->getConstants());
+
+        $configKeys = [];
+
+        foreach ($contextEvents as $event) {
+            $configKeys[$event] = [
+                "$event.product",
+                "$event.id",
+                "$event.key"
+            ];
+        }
+
+        $configKeys['default'] = ['product_service', 'product', 'id', 'key'];
+
+        return $configKeys;
+    }
 
     public static function isExtensionSetup(SettingsRepositoryInterface $settings, string $type = 'default'): bool
     {
-        return !self::isNil($settings, self::$configKeys[$type]);
+        $configKeys = self::generateConfigKeys();
+        $key = $configKeys[$type] ?? $configKeys['default'];
+        return !self::isNil($settings, $key);
     }
 
     private static function isNil(SettingsRepositoryInterface $settings, array $keys)

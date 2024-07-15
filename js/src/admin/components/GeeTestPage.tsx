@@ -29,8 +29,7 @@ export default class GeeTestPage extends ExtensionPage {
     });
 
     // context enabled status
-    Object.keys(EnumContextEvent).forEach((enumKey) => {
-      const key = EnumContextEvent[enumKey as keyof typeof EnumContextEvent];
+    Object.values(EnumContextEvent).forEach((key) => {
       const path = AdminSettings.getPath(key);
       const value = this.settings[path]();
       this.settings[path](value === '1');

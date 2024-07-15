@@ -15,6 +15,7 @@ use FFans\GeeTest\Enums\ContextEvent;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 class ForumAttributes
 {
@@ -36,39 +37,52 @@ class ForumAttributes
 
     public function __invoke(ForumSerializer $serializer, $model, array $attributes): array
     {
-        $settingNames = [
+        $reflectionClass = new ReflectionClass(ContextEvent::class);
+        $contextEvents = array_values($reflectionClass->getConstants());
+        $baseSettings = [
             self::ProductService,
             self::Product,
             self::Id,
-            ContextEvent::Signup . '.' . self::Product,
-            ContextEvent::Signup . '.' . self::Id,
-            ContextEvent::Login . '.' . self::Product,
-            ContextEvent::Login . '.' . self::Id,
-            ContextEvent::Forgot . '.' . self::Product,
-            ContextEvent::Forgot . '.' . self::Id,
         ];
 
-        foreach ($settingNames as $name) {
-            $attributes[Utils::getSettingPath(Str::camel($name))] = $this->settings->get(Utils::getSettingPath($name));
+        // base setting names
+        $settingNames = array_merge(
+            $baseSettings,
+            array_map(function ($event) { return "$event." . self::Product; }, $contextEvents),
+            array_map(function ($event) { return "$event." . self::Id; }, $contextEvents)
+        );
+
+        // bool setting names
+        $boolSettings = array_merge(
+            $contextEvents,
+            array_map(function ($event) { return "$event." . self::Standalone; }, $contextEvents)
+        );
+
+        // init base setting maps
+        $allSettings = array_map(function ($name) {
+            return ['name' => $name, 'isBool' => false];
+        }, $settingNames);
+
+        // merge bool setting maps
+        $allSettings = array_merge($allSettings, array_map(function ($name) {
+            return ['name' => $name, 'isBool' => true];
+        }, $boolSettings));
+
+        // assignment settings
+        foreach ($allSettings as $setting) {
+            $value = $this->settings->get(Utils::getSettingPath($setting['name']));
+            if ($setting['isBool']) {
+                $value = $value === '1';
+            }
+            $attributes[Utils::getSettingPath(Str::camel($setting['name']))] = $value;
         }
 
-        $boolSettings = [
-            ContextEvent::Signup,
-            ContextEvent::Login,
-            ContextEvent::Forgot,
-            ContextEvent::Signup . '.' . self::Standalone,
-            ContextEvent::Login . '.' . self::Standalone,
-            ContextEvent::Forgot . '.' . self::Standalone,
-        ];
-
-        foreach ($boolSettings as $name) {
-            $attributes[Utils::getSettingPath(Str::camel($name))] = $this->settings->get(Utils::getSettingPath($name)) === '1';
-        }
-
+        // assignment general configured or not
         $attributes[Utils::getSettingPath(self::Configured)] = Utils::isExtensionSetup($this->settings);
-        $attributes[Utils::getSettingPath(ContextEvent::Signup . '.' . self::Configured)] = Utils::isExtensionSetup($this->settings, ContextEvent::Signup);
-        $attributes[Utils::getSettingPath(ContextEvent::Login . '.' . self::Configured)] = Utils::isExtensionSetup($this->settings, ContextEvent::Login);
-        $attributes[Utils::getSettingPath(ContextEvent::Forgot . '.' . self::Configured)] = Utils::isExtensionSetup($this->settings, ContextEvent::Forgot);
+        // assignment context event configured or not
+        foreach ($contextEvents as $event) {
+            $attributes[Utils::getSettingPath("$event." . self::Configured)] = Utils::isExtensionSetup($this->settings, $event);
+        }
 
         return $attributes;
     }

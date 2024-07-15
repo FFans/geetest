@@ -24,7 +24,8 @@ export interface Config extends Omit<BaseConfig, 'standalone'> {
 }
 
 export const BASE_CONFIG = ['product', 'id', 'key'] as unknown as [keyof Omit<BaseConfig, 'standalone'>];
-export const CONFIG = ([] as unknown as [keyof Config]).concat(BASE_CONFIG, 'productService', 'login', 'signup', 'forgot');
+export const CONFIG = [...BASE_CONFIG, 'productService', ...Object.values(EnumContextEvent)] as (keyof Config)[];
+;
 
 export default class CommonSettings {
   static PREFIX = 'ffans-geetest';
