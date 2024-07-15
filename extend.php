@@ -31,16 +31,17 @@ return [
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
-    (new Extend\Settings())
-        ->default('ffans-geetest.signup', true)
-        ->default('ffans-geetest.login', true)
-        ->default('ffans-geetest.forgot', true),
-
-    (new Extend\Routes('api'))
-        ->post('/ffans/geetest/test', 'ffans-geetest.test', Api\Controller\TestGeeTestController::class),
+//    (new Extend\Settings())
+//        ->default('ffans-geetest.signup', true)
+//        ->default('ffans-geetest.login', true)
+//        ->default('ffans-geetest.forgot', true)
+//        ->default('ffans-geetest.forgot', true),
 
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attributes(ForumAttributes::class),
+
+    (new Extend\Routes('api'))
+        ->post('/ffans/geetest/test', 'ffans-geetest.test', Api\Controller\TestGeeTestController::class),
 
     (new Extend\Validator(GeeTestValidator::class))
         ->configure(AddValidatorRule::class),
